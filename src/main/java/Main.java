@@ -13,6 +13,7 @@ import javax.persistence.Persistence;
                 em.persist(direccion);
                 Estudiante p = new Estudiante(46321984, "Juan", "Del Cabo", 25, "Hombre", "Tandil", 1);
                 Estudiante p1 = new Estudiante(46321985, "Ana", "Parlucci", 22, "Mujer", "Tres Arroyos", 2);
+                p1.setCarrera(direccion);
                 em.persist(p);
                 em.persist(p1);
                 em.getTransaction().commit();

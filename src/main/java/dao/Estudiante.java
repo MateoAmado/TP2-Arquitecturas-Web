@@ -106,4 +106,8 @@ public class Estudiante {
     public void setCarreras(Set<Carrera> carreras) {
         this.carreras = carreras;
     }
+
+    public void setCarrera(Carrera carrera) {
+        this.carreras.add(carrera);
+    }
 }
