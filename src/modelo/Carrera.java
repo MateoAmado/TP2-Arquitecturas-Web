@@ -19,9 +19,13 @@ public class Carrera {
     @ManyToMany(mappedBy = "carreras")
     private Set<modelo.Estudiante> estudiantes = new HashSet<>();
 
+    private Long cant_alumnos=null;
+
     public Carrera(String nombre) {
         this.nombre = nombre;
     }
+
+
 
     public Carrera() {
 
@@ -31,6 +35,9 @@ public class Carrera {
         return idCarrera;
     }
 
+    public Long getCant_alumnos(){
+        return this.cant_alumnos;
+    }
     public String getNombre() {
         return nombre;
     }
@@ -45,5 +52,27 @@ public class Carrera {
 
     public void setEstudiantes(Set<Estudiante> estudiantes) {
         this.estudiantes = estudiantes;
+    }
+
+    @Override
+    public String toString() {
+        if(this.cant_alumnos!=null)
+        {
+            return "Carrera{ " +
+                    "idCarrera=" + idCarrera +
+                    ", nombre='" + nombre + '\'' +
+                    ", cantidad inscriptos:" + cant_alumnos +
+                    '}';
+        }
+        return "Carrera{ " +
+                "idCarrera=" + idCarrera +
+                ", nombre='" + nombre + '\'' +
+                '}';
+
+    }
+
+
+    public void setCantInscriptos(Long cantInscriptos) {
+        this.cant_alumnos=cantInscriptos;
     }
 }

@@ -112,4 +112,17 @@ public class Estudiante {
     public void setCarrera(Carrera carrera) {
         this.carreras.add(carrera);
     }
+
+    @Override
+    public String toString() {
+        return "Estudiante{" +
+                "numeroDocumento=" + numeroDocumento +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", edad=" + edad +
+                ", genero='" + genero + '\'' +
+                ", ciudadResidencia='" + ciudadResidencia + '\'' +
+                ", numeroLibretaUniversitaria=" + numeroLibretaUniversitaria +
+                '}';
+    }
 }

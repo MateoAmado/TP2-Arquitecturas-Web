@@ -16,7 +16,7 @@ public class ConnectionFactory {
     private EntityManager em;
     private ConnectionFactory(){}
 
-    public ConnectionFactory getInstance(){
+    public static ConnectionFactory getInstance(){
         return instance;
     }
 
