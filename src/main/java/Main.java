@@ -1,5 +1,5 @@
-import dao.Carrera;
-import dao.Estudiante;
+import modelo.Carrera;
+import modelo.Estudiante;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;

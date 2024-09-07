@@ -1,4 +1,6 @@
-package dao;
+package modelo;
+import modelo.Carrera;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;

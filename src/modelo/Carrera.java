@@ -1,4 +1,4 @@
-package dao;
+package modelo;
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -17,7 +17,7 @@ public class Carrera {
     private String nombre;
 
     @ManyToMany(mappedBy = "carreras")
-    private Set<Estudiante> estudiantes = new HashSet<>();
+    private Set<modelo.Estudiante> estudiantes = new HashSet<>();
 
     public Carrera(String nombre) {
         this.nombre = nombre;

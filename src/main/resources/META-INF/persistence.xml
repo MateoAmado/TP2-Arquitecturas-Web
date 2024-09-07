@@ -6,8 +6,8 @@
     <persistence-unit name="MySQL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 
-        <class>dao.Carrera</class>
-        <class>dao.Estudiante</class>
+        <class>Modelo.Carrera</class>
+        <class>Modelo.Estudiante</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver" />
