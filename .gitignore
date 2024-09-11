@@ -1,4 +1,5 @@
 target/
+
 !.mvn/wrapper/maven-wrapper.jar
 
 ### IntelliJ IDEA ###
@@ -33,6 +34,10 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Derby Db ###
+MyDerby/
+derby.log
 
 ### Mac OS ###
 .DS_Store
