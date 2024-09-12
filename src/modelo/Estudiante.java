@@ -31,7 +31,7 @@ public class Estudiante {
     @Column(name = "numero_libreta_universitaria")
     private int numeroLibretaUniversitaria;
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinTable(
             name = "estudiante_carrera",
             joinColumns = @JoinColumn(name = "estudiante_numero_documento"),

@@ -14,32 +14,22 @@ import java.util.List;
 public class Main {
             public static void main(String[] args) {
 
-                EntityManagerFactory emf = ConnectionFactory.getInstance().getConnection(ConnectionFactory.DERBY);
-
-
-                EntityManager em= emf.createEntityManager();
-
-                em.getTransaction().begin();
-
-/*
-               //Para crear tablas y datos
-                Carrera direccion = new Carrera("TUDAI");
-                em.persist(direccion);
+                Carrera direccion = new Carrera(0, "TUDAI");
                 Estudiante p = new Estudiante(46321984, "Juan", "Del Cabo", 25, "Hombre", "Tandil", 1);
                 Estudiante p1 = new Estudiante(46321985, "Ana", "Parlucci", 22, "Mujer", "Tres Arroyos", 2);
                 p1.setCarrera(direccion);
-                em.persist(p);
-                em.persist(p1);
 
+                EstudianteDAOMySQL daoEstudiante=(EstudianteDAOMySQL) DAOFactory.getInstance().getDAO(DAOFactory.ESTUDIANTE);
+                CarreraDAOMySql daoCarrera=(CarreraDAOMySql) DAOFactory.getInstance().getDAO(DAOFactory.CARRERA);
 
-                //Comentar hasta acá la parte de creación de Tablas.
-*/
-
+                daoEstudiante.cargarEstudiante(p);
+                daoEstudiante.cargarEstudiante(p1);
+                daoCarrera.insertar(direccion);
                 EstudianteDAOMySQL es = new EstudianteDAOMySQL();
                 CarreraDAOMySql c = new CarreraDAOMySql();
+
+
                 //Estudiantes por apellido
-
-
                 List<Estudiante> estudiantes = es.estudiantesOrdenadosApellido();
                 for(Estudiante e: estudiantes){
                     System.out.println(e);
@@ -51,9 +41,7 @@ public class Main {
                      System.out.println(ca);
                  }
 
-                em.getTransaction().commit();
-                em.close();
-                emf.close();
+
             }
         }
 

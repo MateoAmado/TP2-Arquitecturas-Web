@@ -9,20 +9,21 @@ import java.util.Set;
 public class Carrera {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_carrera")
     private int idCarrera;
 
     @Column(name = "nombre", length = 100)
     private String nombre;
 
-    @ManyToMany(mappedBy = "carreras")
-    private Set<modelo.Estudiante> estudiantes = new HashSet<>();
+    @ManyToMany(mappedBy = "carreras", fetch = FetchType.LAZY)
+    private Set<modelo.Estudiante> estudiantes;
 
     private Long cant_alumnos=null;
 
-    public Carrera(String nombre) {
+    public Carrera(int id,String nombre) {
+        this.idCarrera=id;
         this.nombre = nombre;
+        estudiantes = new HashSet<>();
     }
 
 

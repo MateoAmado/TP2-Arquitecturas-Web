@@ -23,9 +23,11 @@ public class EstudianteDAOMySQL implements EstudianteDAO {
     public void cargarEstudiante(Estudiante e){
         EntityManagerFactory emf= ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
         EntityManager em= emf.createEntityManager();
+        em.getTransaction().begin();
         em.persist(e);
-        ConnectionFactory.instance.disconnect();
+        em.getTransaction().commit();
         em.close();
+        ConnectionFactory.instance.disconnect();
     }
 
     public List<Estudiante> estudiantesOrdenadosApellido(){

@@ -2,20 +2,22 @@ package modelo;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+
 
 @Entity
 
 public class Estudiante_Carrera {
-
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
     @Column(name = "Anio_ingreso")
-    private Date anioInscripcion;
+    private Date anioInscripcion=null;
 
     @Column(name = "recibido")
-    private boolean recibido;
+    private boolean recibido=false;
+
+
 
 
 }
