@@ -14,10 +14,10 @@ import java.util.List;
 public class Main {
             public static void main(String[] args) {
 
-                ConnectionFactory cf = ConnectionFactory.getInstance();
-                EntityManagerFactory emf= Persistence.createEntityManagerFactory("MySQL");
+                EntityManagerFactory emf = ConnectionFactory.getInstance().getConnection(ConnectionFactory.DERBY);
 
-                EntityManager em = cf.getConnection(ConnectionFactory.MySQL);
+
+                EntityManager em= emf.createEntityManager();
 
                 em.getTransaction().begin();
 
@@ -35,8 +35,8 @@ public class Main {
                 //Comentar hasta acá la parte de creación de Tablas.
 */
 
-                EstudianteDAOMySQL es = new EstudianteDAOMySQL(em);
-                CarreraDAOMySql c = new CarreraDAOMySql(em);
+                EstudianteDAOMySQL es = new EstudianteDAOMySQL();
+                CarreraDAOMySql c = new CarreraDAOMySql();
                 //Estudiantes por apellido
 
 

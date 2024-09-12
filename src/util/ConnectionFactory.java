@@ -13,32 +13,26 @@ public class ConnectionFactory {
 
     private Connection connection;
     private EntityManagerFactory emf;
-    private EntityManager em;
     private ConnectionFactory(){}
 
     public static ConnectionFactory getInstance(){
         return instance;
     }
 
-    public EntityManager getConnection(String tipo){
+    public EntityManagerFactory getConnection(String tipo){
         if(tipo.equals(DERBY)){
             this.emf = Persistence.createEntityManagerFactory(DERBY);
-            this.em = emf.createEntityManager();
         }
         if(tipo.equals(MySQL)){
             this.emf = Persistence.createEntityManagerFactory(MySQL);
-            this.em = emf.createEntityManager();
         }
 
-        return em;
+        return emf;
     }
 
-    public EntityManager connection(){
-        return this.em;
-    }
+
 
     public void disconnect(){
-        this.em.close();
         this.emf.close();
     }
 }

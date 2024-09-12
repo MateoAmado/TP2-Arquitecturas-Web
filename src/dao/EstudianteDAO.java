@@ -13,4 +13,6 @@ public interface EstudianteDAO {
     public Estudiante getEstudiantePorNroLibreta(int nroLibreta);
 
     public List<Estudiante> getEstudiantesPorGenero(String genero);
+
+    public void cargarEstudiante(Estudiante e);
 }

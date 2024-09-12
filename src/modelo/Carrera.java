@@ -71,6 +71,12 @@ public class Carrera {
 
     }
 
+    public void addEstudiante(Estudiante estudiante){
+        if(estudiante != null){
+            estudiantes.add(estudiante);
+        }
+    }
+
 
     public void setCantInscriptos(Long cantInscriptos) {
         this.cant_alumnos=cantInscriptos;
