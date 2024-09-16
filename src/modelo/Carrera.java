@@ -9,6 +9,7 @@ import java.util.Set;
 public class Carrera {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_carrera")
     private int idCarrera;
 
@@ -18,10 +19,8 @@ public class Carrera {
     @ManyToMany(mappedBy = "carreras", fetch = FetchType.LAZY)
     private Set<modelo.Estudiante> estudiantes;
 
-    private Long cant_alumnos=null;
 
-    public Carrera(int id,String nombre) {
-        this.idCarrera=id;
+    public Carrera(String nombre) {
         this.nombre = nombre;
         estudiantes = new HashSet<>();
     }
@@ -36,9 +35,6 @@ public class Carrera {
         return idCarrera;
     }
 
-    public Long getCant_alumnos(){
-        return this.cant_alumnos;
-    }
     public String getNombre() {
         return nombre;
     }
@@ -57,14 +53,6 @@ public class Carrera {
 
     @Override
     public String toString() {
-        if(this.cant_alumnos!=null)
-        {
-            return "Carrera{ " +
-                    "idCarrera=" + idCarrera +
-                    ", nombre='" + nombre + '\'' +
-                    ", cantidad inscriptos:" + cant_alumnos +
-                    '}';
-        }
         return "Carrera{ " +
                 "idCarrera=" + idCarrera +
                 ", nombre='" + nombre + '\'' +
@@ -76,10 +64,5 @@ public class Carrera {
         if(estudiante != null){
             estudiantes.add(estudiante);
         }
-    }
-
-
-    public void setCantInscriptos(Long cantInscriptos) {
-        this.cant_alumnos=cantInscriptos;
     }
 }

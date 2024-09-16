@@ -18,28 +18,12 @@ public class DAOFactory {
     public Object getDAO(String dao){
         switch(dao){
             case CARRERA:
-                //if(tipo.equals(ConnectionFactory.MySQL)){
                     return new CarreraDAOMySql();
-                     /*}
-                if(tipo.equals(ConnectionFactory.DERBY)){
-                    return new CarreraDAODerby();
-                }*/
-
             case ESTUDIANTE:
-                //if(tipo.equals(ConnectionFactory.MySQL)){
                     return new EstudianteDAOMySQL();
-
             default:
                 return null;
         }
-                /*if(tipo.equals(ConnectionFactory.DERBY)){
-                    return new EstudianteDAODerby();
-                }*/
 
-        /*            case CARRERADERBY:
-                if(tipo.equals(ConnectionFactory.DERBY)){
-                    return new EstudianteDAOMySQL();
-                }
-     */
     }
 }

@@ -13,7 +13,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-public class EstudianteDAOMySQL implements EstudianteDAO {
+public class EstudianteDAOMySQL{
 
 
     public EstudianteDAOMySQL(){

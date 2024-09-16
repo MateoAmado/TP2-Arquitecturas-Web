@@ -1,23 +1,29 @@
 package modelo;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 
 @Entity
-
+@Table(name = "estudiante_carrera")
 public class Estudiante_Carrera {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
 
-    @Column(name = "Anio_ingreso")
-    private Date anioInscripcion=null;
+    @EmbeddedId
+    private EstudianteCarreraId id;
 
-    @Column(name = "recibido")
-    private boolean recibido=false;
+    @ManyToOne
+    @MapsId("estudianteNumeroDocumento")
+    @JoinColumn(name = "estudiante_numero_documento")
+    private Estudiante estudiante;
 
+    @ManyToOne
+    @MapsId("carreraIdCarrera")
+    @JoinColumn(name = "carrera_id_carrera")
+    private Carrera carrera;
 
+    @Column(name = "fecha_inscripcion")
+    private LocalDate fechaInscripcion;
 
-
+    // Constructor, getters y setters
 }
