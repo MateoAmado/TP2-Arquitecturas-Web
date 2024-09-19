@@ -14,5 +14,20 @@ public class EstudianteCarreraId implements Serializable {
     @Column(name = "id_carrera")
     private int carreraIdCarrera;
 
-    // Constructor, equals() y hashCode()
+    public void setEstudianteId(Estudiante p1) {
+        this.estudianteNumeroDocumento=p1.getNumeroDocumento();
+    }
+
+    public void setCarreraId(Carrera carrera) {
+        this.carreraIdCarrera=carrera.getIdCarrera();
+    }
+
+    public int getCarreraId(){
+        return carreraIdCarrera;
+    }
+
+    public int getEstudianteNumeroDocumento(){
+        return estudianteNumeroDocumento;
+    }
+
 }

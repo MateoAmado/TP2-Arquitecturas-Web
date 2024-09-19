@@ -8,10 +8,10 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.List;
-public class CarreraDAOMySql{
+public class CarreraDAO {
 
 
-    public CarreraDAOMySql(){
+    public CarreraDAO(){
 
     }
 
@@ -38,26 +38,8 @@ public class CarreraDAOMySql{
     }
 
 
-    public List<Carrera> informeCarreras() {
-        EntityManagerFactory emf = ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
-        EntityManager em = emf.createEntityManager();
-        List<Carrera> listaCarreras = new ArrayList<>(); // Lista para almacenar las carreras
+/*    public List<Carrera> informeCarreras() {
 
-        // Consulta SQL
-        Query sql = em.createQuery(
-                "SELECT c.idCarrera, c.nombre, e.numeroDocumento, e.nombre, e.apellido, e.ciudadResidencia, e.edad, e.genero, e.numeroLibretaUniversitaria, COUNT(e.numeroDocumento) AS totalInscriptos " +
-                        "FROM Carrera c " +
-                        "JOIN c.estudiantes e " +
-                        "JOIN Estudiante_Carrera ec "+
-                        "GROUP BY c.idCarrera, c.nombre, e.numeroDocumento, e.nombre, e.apellido, e.ciudadResidencia, e.edad, e.genero, e.numeroLibretaUniversitaria " +
-                        "ORDER BY c.nombre ASC,  ec.fechaInscripcion ASC"
-        );
-
-        // Obtener los resultados
-        List<Object[]> resultados = sql.getResultList();
-
-        // Iterar sobre los resultados y crear los objetos
-        for (Object[] resultado : resultados) {
             int idCarrera = (Integer) resultado[0];
             String nombreCarrera = (String) resultado[1];
             int numeroDocumento = (Integer) resultado[2];
@@ -99,7 +81,7 @@ public class CarreraDAOMySql{
         // Devolver la lista de carreras
         return listaCarreras;
     }
-
+*/
 
 
 

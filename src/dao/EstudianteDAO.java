@@ -3,9 +3,7 @@ package dao;
 import modelo.Carrera;
 import modelo.Estudiante;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import util.ConnectionFactory;
 
@@ -13,10 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 
-public class EstudianteDAOMySQL{
+public class EstudianteDAO {
 
 
-    public EstudianteDAOMySQL(){
+    public EstudianteDAO(){
     }
 
 
