@@ -18,7 +18,7 @@ public class Estudiante_Carrera {
     private Estudiante estudiante;
 
     @ManyToOne
-    @MapsId("carreraIdCarrera")
+    @MapsId("IdCarrera")
     @JoinColumn(name = "carrera_id_carrera")
     private Carrera carrera;
 
@@ -40,6 +40,14 @@ public class Estudiante_Carrera {
         this.carrera = carrera;
         this.fechaInscripcion = fechaInscripcion;
         this.graduado = false;
+    }
+
+    public Estudiante_Carrera(EstudianteCarreraId id,Estudiante estudiante, Carrera carrera, LocalDate fecha, boolean graduado) {
+        this.id=id;
+        this.estudiante = estudiante;
+        this.carrera = carrera;
+        this.fechaInscripcion = fecha;
+        this.graduado = graduado;
     }
 
     public EstudianteCarreraId getId() {

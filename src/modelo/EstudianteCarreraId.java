@@ -12,18 +12,18 @@ public class EstudianteCarreraId implements Serializable {
     private int estudianteNumeroDocumento;
 
     @Column(name = "id_carrera")
-    private int carreraIdCarrera;
+    private int IdCarrera;
 
     public void setEstudianteId(Estudiante p1) {
         this.estudianteNumeroDocumento=p1.getNumeroDocumento();
     }
 
     public void setCarreraId(Carrera carrera) {
-        this.carreraIdCarrera=carrera.getIdCarrera();
+        this.IdCarrera=carrera.getIdCarrera();
     }
 
     public int getCarreraId(){
-        return carreraIdCarrera;
+        return IdCarrera;
     }
 
     public int getEstudianteNumeroDocumento(){
