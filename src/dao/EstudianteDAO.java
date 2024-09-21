@@ -77,11 +77,11 @@ public class EstudianteDAO {
 
 
 
-    public List<Estudiante> estudiantesPorCarrerayFiltrado(Carrera carrera, String ciudad){
+    public List<Estudiante> estudiantesPorCarrerayFiltrado(String carrera, String ciudad){
         EntityManagerFactory emf= ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
         EntityManager em= emf.createEntityManager();
         em.getTransaction().begin();
-       Query q = em.createQuery("SELECT e FROM Estudiante e JOIN e.carreras c WHERE e.ciudadResidencia = :ciudad AND c = :carrera");
+       Query q = em.createQuery("SELECT e FROM Estudiante e JOIN e.carreras c WHERE e.ciudadResidencia = :ciudad AND c.nombre = :carrera");
        q.setParameter("ciudad", ciudad);
        q.setParameter("carrera", carrera);
         List<Estudiante> estudiantes = q.getResultList();

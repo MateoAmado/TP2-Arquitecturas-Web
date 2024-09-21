@@ -92,7 +92,8 @@ public class CarreraDAO {
         Query sql = em.createQuery("SELECT c, COUNT(e) AS cant_inscriptos " +
                 "FROM Carrera c " +
                 "JOIN c.estudiantes e " +
-                "GROUP BY c.id");
+                "GROUP BY c.id " +
+                "ORDER BY COUNT(e) DESC");
         List<Object[]> carreras = sql.getResultList();
         for (Object[] c  : carreras) {
             Carrera carrera = (Carrera) c[0]; // La entidad Carrera
@@ -100,11 +101,13 @@ public class CarreraDAO {
 
             cs.add(carrera);
             cs.add(cantInscriptos);
-            ConnectionFactory.getInstance().disconnect();
-            em.close();
         }
-
+        ConnectionFactory.getInstance().disconnect();
+        em.close();
+    if(!cs.isEmpty()){
         return cs;
+    }
+        return null;
     }
 
 

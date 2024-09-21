@@ -9,7 +9,7 @@ import java.util.Set;
 public class Carrera {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id_carrera")
     private int idCarrera;
 
