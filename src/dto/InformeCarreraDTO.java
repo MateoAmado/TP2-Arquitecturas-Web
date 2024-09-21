@@ -15,12 +15,14 @@ public class InformeCarreraDTO {
     private String estudiante_apellido;
     private String estudiante_ciudad;
     private int estudiante_libretaUniversitaria;
-    private Timestamp fecha_inscripcion;
+    private LocalDate fecha_inscripcion;
+
+    private boolean graduado;
 
 
 //c.idCarrera, c.nombre, e.numeroDocumento, e.nombre, e.apellido, e.ciudadResidencia, e.edad, e.genero, e.numeroLibretaUniversitaria
 
-    public InformeCarreraDTO(int id_carrera, String carrera_nombre, int estudiante_nroDocumento, String nombre_estudiante, String estudiante_apellido, String estudiante_ciudad, int edad, String estudiante_genero, int estudiante_libretaUniversitaria, LocalDate fechaInscripcion) {
+    public InformeCarreraDTO(int id_carrera, String carrera_nombre, int estudiante_nroDocumento, String nombre_estudiante, String estudiante_apellido, String estudiante_ciudad, int edad, String estudiante_genero, int estudiante_libretaUniversitaria, LocalDate fechaInscripcion, boolean graduado) {
         this.id_carrera = id_carrera;
         this.carrera_nombre = carrera_nombre;
         this.estudiante_nroDocumento = estudiante_nroDocumento;
@@ -30,7 +32,8 @@ public class InformeCarreraDTO {
         this.estudiante_apellido = estudiante_apellido;
         this.estudiante_ciudad = estudiante_ciudad;
         this.estudiante_libretaUniversitaria = estudiante_libretaUniversitaria;
-        this.fecha_inscripcion=fecha_inscripcion;
+        this.fecha_inscripcion=fechaInscripcion;
+        this.graduado = graduado;
     }
 
     public int getId_carrera() {
@@ -104,17 +107,25 @@ public class InformeCarreraDTO {
 
     @Override
     public String toString() {
-        return "InformeCarreraDTO{" +
-                "id_carrera=" + id_carrera +
-                ", carrera_nombre='" + carrera_nombre + '\'' +
-                ", estudiante_nroDocumento=" + estudiante_nroDocumento +
-                ", nombre_estudiante='" + nombre_estudiante + '\'' +
-                ", estudiante_genero='" + estudiante_genero + '\'' +
-                ", edad=" + edad +
-                ", estudiante_apellido='" + estudiante_apellido + '\'' +
-                ", estudiante_ciudad='" + estudiante_ciudad + '\'' +
-                ", estudiante_libretaUniversitaria=" + estudiante_libretaUniversitaria +'/'
-                +",fecha de inscripcion= "+fecha_inscripcion+
-                '}';
+        return "Informe de Carrera " +
+                "id_carrera=" + id_carrera + '\n' +
+                "- Carrera ='" + carrera_nombre + '\n' +
+                "- DNI del Estudiante =" + estudiante_nroDocumento + '\n' +
+                "- Nombre del Estudiante ='" + nombre_estudiante + '\n' +
+                "- Genero del Estudiante ='" + estudiante_genero + '\n' +
+                "- Edad del estudiante =" + edad + '\n' +
+                "- Apellido del estudiante ='" + estudiante_apellido + '\n' +
+                "- Ciudad del estudiante ='" + estudiante_ciudad + '\n' +
+                "- Nro de libreta Universitaria=" + estudiante_libretaUniversitaria +'\n' +
+                "- Fecha de inscripcion= "+fecha_inscripcion+  '\n' +
+                "- Esta graduado? "+estaGraduado(graduado) + '\n' +
+                '.';
+    }
+
+    public String estaGraduado(boolean graduado){
+        if(graduado){
+            return "SI";
+        }
+        return "NO";
     }
 }

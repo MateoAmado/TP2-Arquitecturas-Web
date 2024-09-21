@@ -115,14 +115,14 @@ public class Estudiante {
 
     @Override
     public String toString() {
-        return "Estudiante{" +
-                "numeroDocumento=" + numeroDocumento +
-                ", nombre='" + nombre + '\'' +
-                ", apellido='" + apellido + '\'' +
-                ", edad=" + edad +
-                ", genero='" + genero + '\'' +
-                ", ciudadResidencia='" + ciudadResidencia + '\'' +
-                ", numeroLibretaUniversitaria=" + numeroLibretaUniversitaria +
-                '}';
+        return "Estudiante " +'\n'+
+                "- Numero de documento = " + numeroDocumento +'\n'+
+                "- Nombre = " + nombre +'\n'+
+                "- Apellido = " + apellido + '\n' +
+                "- Edad = " + edad +'\n'+
+                "- Genero = " + genero + '\n' +
+                "- Ciudad de residencia = " + ciudadResidencia + '\n' +
+                "- Numero de libreta universitaria = " + numeroLibretaUniversitaria +'\n'+
+                '.';
     }
 }

@@ -1,3 +1,4 @@
+import dto.CarreraInscriptosDTO;
 import dto.InformeCarreraDTO;
 import modelo.Carrera;
 import modelo.Estudiante;
@@ -19,8 +20,13 @@ public class Main {
     public static EstudianteDAO daoEstudiante=(EstudianteDAO) DAOFactory.getInstance().getDAO(DAOFactory.ESTUDIANTE);
     public static InformeCarreraDAO informeCarreraDao=(InformeCarreraDAO) DAOFactory.getInstance().getDAO(DAOFactory.INFORME_CARRERA);
     public static EntityManagerFactory emf= ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
+
     public static void main(String[] args) {
 
+        daoCarrera.instance(emf);
+        daoEstudiante.instance(emf);
+        informeCarreraDao.instance(emf);
+/*
         //Carreras para cargar
         Carrera direccion = new Carrera( "TUDAI");
         Carrera carrera = new Carrera( "Contador público");
@@ -47,7 +53,7 @@ public class Main {
         Estudiante p9 = new Estudiante(40217856, "Ignacio", "Fernandez", 23, "Hombre", "Neuquén", 10);
         Estudiante p10 = new Estudiante(38847521, "Julieta", "Diaz", 20, "Mujer", "Santa Fe", 11);
 
-    /*
+
         daoCarrera.cargarCarrera(direccion);
         daoCarrera.cargarCarrera(carrera);
         daoCarrera.cargarCarrera(carrera_2);
@@ -203,19 +209,20 @@ public class Main {
         crearRelacion(ec33);
         crearRelacion(ec34);
 
-     */
-        //EstudiantesOrdenadosPorApellido();
+*/
+        EstudiantesOrdenadosPorApellido();
 
-        //obtenerEstudiantePorNumeroDeLibreta(2);
+        obtenerEstudiantePorNumeroDeLibreta(2);
 
         obtenerEstudiantesInscriptos();
 
-        //obtenerEstudiantesPorGenero("Mujer");
+        obtenerEstudiantesPorGenero("Mujer");
 
-        //obtenerEstudiantePorCarreraYCiudad("Geografia", "Rosario");
+        obtenerEstudiantePorCarreraYCiudad("Geografia", "Rosario");
 
-        //obtenerInformeCarreras();
+        obtenerInformeCarreras();
 
+        emf.close();
 
     }
 
@@ -232,11 +239,21 @@ public class Main {
         em.getTransaction().begin();
 
         Carrera carrera = ec.getCarrera();
-        carrera = em.merge(carrera);
+        if(em.find(Carrera.class, carrera.getIdCarrera()) != null){
+           carrera = em.merge(carrera);
+        }
+        else{
+            em.persist(carrera);
+        }
         ec.setCarrera(carrera);
 
         Estudiante estudiante = ec.getEstudiante();
-        estudiante = em.merge(estudiante);
+        if(em.find(Estudiante.class, estudiante.getNumeroDocumento()) != null){
+            estudiante = em.merge(estudiante);
+        }
+        else{
+            em.persist(estudiante);
+        }
         ec.setEstudiante(estudiante);
 
         EstudianteCarreraId id = ec.getId();
@@ -263,22 +280,10 @@ public class Main {
 
     }
     private static void obtenerEstudiantesInscriptos() {
-        List<Object> carreras = (List<Object>) daoCarrera.carreraEstudiantesInscriptos();
-        if(carreras!=null){
-            for(int i=0; i<carreras.size(); i++){
-                if(i%2==0 || i==0){
-                    System.out.println(carreras.get(i));
-                }
-                else{
-                    Carrera c= (Carrera) carreras.get(i-1);
-                    System.out.println("La cantidad de Alumnos inscriptos en "+c.getNombre()+" es de: " + carreras.get(i)+".\n");
-                }
-            }
+        List<CarreraInscriptosDTO> dtos = daoCarrera.carreraEstudiantesInscriptos();
+        for(CarreraInscriptosDTO dto: dtos) {
+            System.out.println(dto);
         }
-        else{
-            System.out.println("No hay ningun estudiante inscripto a alguna carrera.");
-        }
-
     }
 
     //Estudiantes por apellido
@@ -290,7 +295,12 @@ public class Main {
     }
 
     public static void obtenerEstudiantePorNumeroDeLibreta(int numero){
-        System.out.println(daoEstudiante.getEstudiantePorNroLibreta(numero));
+        Estudiante e = daoEstudiante.getEstudiantePorNroLibreta(numero);
+        if(e != null) {
+            System.out.println(daoEstudiante.getEstudiantePorNroLibreta(numero));
+        }else{
+            System.out.println("No se encontro el estudiante!!!");
+        }
     }
 
     public static void obtenerEstudiantePorCarreraYCiudad(String c, String ciudad){
@@ -309,7 +319,7 @@ public class Main {
         List<InformeCarreraDTO> informe=informeCarreraDao.informeCarreras();
         System.out.println("Tamaño del reporte: "+informe.size());
         for(InformeCarreraDTO ca:informe){
-            System.out.print(informe);
+            System.out.println(ca);
         }
     }
 }

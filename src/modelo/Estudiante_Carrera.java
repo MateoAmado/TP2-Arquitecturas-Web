@@ -26,7 +26,7 @@ public class Estudiante_Carrera {
     private LocalDate fechaInscripcion;
 
     @Column(name="graduado")
-    private Boolean graduado = false;
+    private boolean graduado = false;
 
     // Constructor, getters y setters
 
@@ -86,4 +86,6 @@ public class Estudiante_Carrera {
     public void setGraduado(boolean graduado) {
         this.graduado = graduado;
     }
+
+
 }

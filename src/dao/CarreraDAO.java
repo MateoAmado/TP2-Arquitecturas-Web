@@ -2,6 +2,7 @@ package dao;
 import modelo.Carrera;
 import modelo.Estudiante;
 import util.ConnectionFactory;
+import dto.CarreraInscriptosDTO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,23 +11,25 @@ import java.util.ArrayList;
 import java.util.List;
 public class CarreraDAO {
 
+    public static EntityManagerFactory emf;
 
     public CarreraDAO(){
 
     }
 
+    public void instance(EntityManagerFactory emf){
+        this.emf=emf;
+    }
+
     public void cargarCarrera(Carrera carrera){
-        EntityManagerFactory emf= ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
         EntityManager em= emf.createEntityManager();
         em.getTransaction().begin();
         em.persist(carrera);
         em.getTransaction().commit();
         em.close();
-        ConnectionFactory.getInstance().disconnect();
     }
 
     public void agregarEstudiante(Carrera carrera, Estudiante estudiante){
-        EntityManagerFactory emf= ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
         EntityManager em= emf.createEntityManager();
         em.getTransaction().begin();
         Carrera c = em.find(Carrera.class, carrera.getIdCarrera());
@@ -34,7 +37,6 @@ public class CarreraDAO {
         em.persist(c);
         em.getTransaction().commit();
         em.close();
-        ConnectionFactory.getInstance().disconnect();
     }
 
 
@@ -85,32 +87,15 @@ public class CarreraDAO {
 
 
 
-    public List<Object> carreraEstudiantesInscriptos(){
-        EntityManagerFactory emf= ConnectionFactory.getInstance().getConnection(ConnectionFactory.MySQL);
-        EntityManager em= emf.createEntityManager();
-        List<Object> cs= new ArrayList<>();
-        Query sql = em.createQuery("SELECT c, COUNT(e) AS cant_inscriptos " +
+    public List<CarreraInscriptosDTO> carreraEstudiantesInscriptos() {
+        EntityManager em = emf.createEntityManager();
+        Query sql = em.createQuery("SELECT new dto.CarreraInscriptosDTO(c.id, c.nombre, COUNT(e))" +
                 "FROM Carrera c " +
                 "JOIN c.estudiantes e " +
                 "GROUP BY c.id " +
                 "ORDER BY COUNT(e) DESC");
-        List<Object[]> carreras = sql.getResultList();
-        for (Object[] c  : carreras) {
-            Carrera carrera = (Carrera) c[0]; // La entidad Carrera
-            Long cantInscriptos = (Long) c[1]; // El valor del conteo
-
-            cs.add(carrera);
-            cs.add(cantInscriptos);
-        }
-        ConnectionFactory.getInstance().disconnect();
+        List<CarreraInscriptosDTO> carreras = sql.getResultList();
         em.close();
-    if(!cs.isEmpty()){
-        return cs;
+        return carreras;
     }
-        return null;
-    }
-
-
-
-
 }
