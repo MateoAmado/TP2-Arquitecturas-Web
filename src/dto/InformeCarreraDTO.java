@@ -107,16 +107,16 @@ public class InformeCarreraDTO {
 
     @Override
     public String toString() {
-        return "Informe de Carrera " +
+        return "Informe de Carrera: " +'\n' +
                 "id_carrera=" + id_carrera + '\n' +
-                "- Carrera ='" + carrera_nombre + '\n' +
+                "- Carrera =" + carrera_nombre + '\n' +
                 "- DNI del Estudiante =" + estudiante_nroDocumento + '\n' +
-                "- Nombre del Estudiante ='" + nombre_estudiante + '\n' +
-                "- Genero del Estudiante ='" + estudiante_genero + '\n' +
+                "- Nombre del Estudiante = " + nombre_estudiante + '\n' +
+                "- Genero del Estudiante = " + estudiante_genero + '\n' +
                 "- Edad del estudiante =" + edad + '\n' +
-                "- Apellido del estudiante ='" + estudiante_apellido + '\n' +
-                "- Ciudad del estudiante ='" + estudiante_ciudad + '\n' +
-                "- Nro de libreta Universitaria=" + estudiante_libretaUniversitaria +'\n' +
+                "- Apellido del estudiante = " + estudiante_apellido + '\n' +
+                "- Ciudad del estudiante = " + estudiante_ciudad + '\n' +
+                "- Nro de libreta Universitaria= " + estudiante_libretaUniversitaria +'\n' +
                 "- Fecha de inscripcion= "+fecha_inscripcion+  '\n' +
                 "- Esta graduado? "+estaGraduado(graduado) + '\n' +
                 '.';

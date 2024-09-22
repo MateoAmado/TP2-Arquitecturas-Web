@@ -30,9 +30,9 @@ public class InformeCarreraDAO {
                         "JOIN  ec.carrera c " +
                         "ORDER BY  ec.fechaInscripcion, c.nombre ASC"
         );
-        List<InformeCarreraDTO> i = sql.getResultList();
+        List<InformeCarreraDTO> informes= sql.getResultList();
 
-        return i;
+        return informes;
     }
 
 

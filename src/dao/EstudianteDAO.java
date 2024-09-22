@@ -46,14 +46,17 @@ public class EstudianteDAO {
 
     public Estudiante getEstudiantePorNroLibreta(int nroLibreta){
         EntityManager em= emf.createEntityManager();
-        Query sql = em.createQuery("SELECT e FROM Estudiante e WHERE e.numeroLibretaUniversitaria = :nro", Estudiante.class);
-        sql.setParameter("nro", nroLibreta);
-        Estudiante estudiante = (Estudiante) sql.getSingleResult();
-        em.close();
-        if(estudiante!=null) {
-            return estudiante;
+        Estudiante estudiante=null;
+        try{
+            Query sql = em.createQuery("SELECT e FROM Estudiante e WHERE e.numeroLibretaUniversitaria = :nro", Estudiante.class);
+            sql.setParameter("nro", nroLibreta);
+            estudiante = (Estudiante) sql.getSingleResult();
         }
-        return null;
+        catch (Exception e){
+            estudiante=null;
+        }
+        em.close();
+        return estudiante;
     }
 
     public List<Estudiante> getEstudiantesPorGenero(String genero){

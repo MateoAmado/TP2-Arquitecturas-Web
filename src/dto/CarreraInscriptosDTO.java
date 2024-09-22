@@ -37,9 +37,9 @@ public class CarreraInscriptosDTO {
     @Override
     public String toString() {
         return "Datos de la carrera{" +'\n'+
-                "idCarrera =" + idCarrera+'\n' +
-                ", Carrera ='" + nombre + '\n' +
-                ", cantidad de Inscriptos =" + cantInscriptos +
+                "idCarrera = " + idCarrera+'\n' +
+                ", Carrera = " + nombre + '\n' +
+                ", cantidad de Inscriptos = " + cantInscriptos +
                 '}'+'\n';
     }
 }

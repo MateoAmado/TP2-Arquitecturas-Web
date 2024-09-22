@@ -10,7 +10,7 @@ import java.util.Set;
 public class Estudiante {
 
     @Id
-    @Column(name = "numero_documento")
+    @Column(name = "numero_documento", unique = true)
     private int numeroDocumento;
 
     @Column(name = "nombre", length = 100)
@@ -28,7 +28,7 @@ public class Estudiante {
     @Column(name = "ciudad_residencia", length = 100)
     private String ciudadResidencia;
 
-    @Column(name = "numero_libreta_universitaria")
+    @Column(name = "numero_libreta_universitaria", unique = true)
     private int numeroLibretaUniversitaria;
 
     @ManyToMany(fetch = FetchType.LAZY)

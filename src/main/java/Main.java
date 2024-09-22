@@ -26,7 +26,7 @@ public class Main {
         daoCarrera.instance(emf);
         daoEstudiante.instance(emf);
         informeCarreraDao.instance(emf);
-/*
+
         //Carreras para cargar
         Carrera direccion = new Carrera( "TUDAI");
         Carrera carrera = new Carrera( "Contador público");
@@ -209,18 +209,16 @@ public class Main {
         crearRelacion(ec33);
         crearRelacion(ec34);
 
-*/
-        EstudiantesOrdenadosPorApellido();
+        //EstudiantesOrdenadosPorApellido();
 
-        obtenerEstudiantePorNumeroDeLibreta(2);
+        //obtenerEstudiantePorNumeroDeLibreta(15);
 
-        obtenerEstudiantesInscriptos();
+        //obtenerEstudiantesInscriptos();
 
-        obtenerEstudiantesPorGenero("Mujer");
+        //obtenerEstudiantesPorGenero("Mujer");
+        //obtenerEstudiantePorCarreraYCiudad("TUDAI", "Tandil");
 
-        obtenerEstudiantePorCarreraYCiudad("Geografia", "Rosario");
-
-        obtenerInformeCarreras();
+        //obtenerInformeCarreras();
 
         emf.close();
 
@@ -265,6 +263,7 @@ public class Main {
             em.persist(ec);
         }
         em.getTransaction().commit();
+        em.close();
     }
 
     public static void obtenerEstudiantesPorGenero(String genero){
@@ -281,9 +280,15 @@ public class Main {
     }
     private static void obtenerEstudiantesInscriptos() {
         List<CarreraInscriptosDTO> dtos = daoCarrera.carreraEstudiantesInscriptos();
-        for(CarreraInscriptosDTO dto: dtos) {
-            System.out.println(dto);
+        if(!dtos.isEmpty()){
+            for(CarreraInscriptosDTO dto: dtos) {
+                System.out.println(dto);
+            }
         }
+        else{
+            System.out.println("No hay estudiantes inscriptos a ninguna carrera.");
+        }
+
     }
 
     //Estudiantes por apellido
@@ -295,12 +300,18 @@ public class Main {
     }
 
     public static void obtenerEstudiantePorNumeroDeLibreta(int numero){
-        Estudiante e = daoEstudiante.getEstudiantePorNroLibreta(numero);
-        if(e != null) {
-            System.out.println(daoEstudiante.getEstudiantePorNroLibreta(numero));
-        }else{
-            System.out.println("No se encontro el estudiante!!!");
+        if(numero>0){
+            Estudiante e = daoEstudiante.getEstudiantePorNroLibreta(numero);
+            if(e != null) {
+                System.out.println(daoEstudiante.getEstudiantePorNroLibreta(numero));
+            }else{
+                System.out.println("No se ha encontrado un estudiante con el número de libreta: "+numero);
+            }
         }
+        else{
+            System.out.println("Debe ingresar un valor mayor que 0");
+        }
+
     }
 
     public static void obtenerEstudiantePorCarreraYCiudad(String c, String ciudad){
@@ -317,10 +328,15 @@ public class Main {
     }
     public static void obtenerInformeCarreras(){
         List<InformeCarreraDTO> informe=informeCarreraDao.informeCarreras();
-        System.out.println("Tamaño del reporte: "+informe.size());
-        for(InformeCarreraDTO ca:informe){
-            System.out.println(ca);
+        if(informe.size()>0){
+            for(InformeCarreraDTO ca:informe){
+                System.out.println(ca);
+            }
         }
+        else{
+            System.out.println("No hay estudiantes inscriptos en ninguna carrera.");
+        }
+
     }
 }
 
