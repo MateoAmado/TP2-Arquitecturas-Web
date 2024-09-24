@@ -5,9 +5,8 @@
 # Indice:
  - [Requisitos](#Requisitos)
  - [Grupo](#Grupo)
- -[Cambiar de BBDD](#¿Como-cambiar-de-BBDD?)
- -[Invocar las funciones](¿Como-invocar-las-funciones?)
-
+ - [Cambiar de BBDD](#¿Como-cambiar-de-BBDD?)
+ - [Invocar las funciones](¿Como-invocar-las-funciones?)
 
 ## Requisitos
 Consiste en realizar un diseño de el diagrama de objetos y el diagrama DER correspondiente de un registro de estudiante, utilizando JPA y consultas con JPQL, los puntos a trabajar son
