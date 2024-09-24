@@ -22,8 +22,14 @@ Consiste en realizar un diseño de el diagrama de objetos y el diagrama DER corr
 inscriptos y egresados por año. Se deben **ordenar** las carreras alfabéticamente, y **presentar**
 los años de manera cronológica.
 
+##¿Como cambiar de BBDD?
+En main, el la linea 22, se usa una variable constante para usar el motor de la base de datos, en este caso solo debe cambiar la variable entre "MySQL" y "Derby"
+
+##¿Como invocar las funciones?
+A partir de la linea 212, se encuentran todas las funciones disponibles, solo se necesitan descomentar.
+
 
 ## Grupo:
 1. [Mateo Amado](https://github.com/MateoAmado/).
-2. [Valentina Catillo](https://github.com/ValennCas).
+2. [Valentina Castillo](https://github.com/ValennCas).
 3. [Gonzalo Hellers](https://github.com/Gonzalohellers).
