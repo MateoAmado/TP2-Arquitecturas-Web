@@ -40,59 +40,12 @@ public class CarreraDAO {
     }
 
 
-/*    public List<Carrera> informeCarreras() {
-
-            int idCarrera = (Integer) resultado[0];
-            String nombreCarrera = (String) resultado[1];
-            int numeroDocumento = (Integer) resultado[2];
-            String nombreEstudiante = (String) resultado[3];
-            String apellidoEstudiante = (String) resultado[4];
-            String ciudadResidencia = (String) resultado[5];
-            int edadEstudiante = (Integer) resultado[6];
-            String generoEstudiante = (String) resultado[7];
-            int numeroLibretaUniversitaria = (Integer) resultado[8];
-
-            // Buscar si la carrera ya está en la lista
-            Carrera carrera = null;
-            for (Carrera c : listaCarreras) {
-                if (c.getIdCarrera() == idCarrera) {
-                    carrera = c;
-                    break;
-                }
-            }
-
-            // Si la carrera no existe en la lista, crearla y agregarla
-            if (carrera == null) {
-                carrera = new Carrera(nombreCarrera);
-                listaCarreras.add(carrera);
-            }
-
-            // Crear el estudiante y agregarlo a la carrera
-            Estudiante estudiante = new Estudiante(
-                    numeroDocumento,
-                    nombreEstudiante,
-                    apellidoEstudiante,
-                    edadEstudiante,
-                    generoEstudiante,
-                    ciudadResidencia,
-                    numeroLibretaUniversitaria
-            );
-            carrera.addEstudiante(estudiante); // Agregar el estudiante a la carrera
-        }
-
-        // Devolver la lista de carreras
-        return listaCarreras;
-    }
-*/
-
-
-
     public List<CarreraInscriptosDTO> carreraEstudiantesInscriptos() {
         EntityManager em = emf.createEntityManager();
         Query sql = em.createQuery("SELECT new dto.CarreraInscriptosDTO(c.id, c.nombre, COUNT(e))" +
                 "FROM Carrera c " +
                 "JOIN c.estudiantes e " +
-                "GROUP BY c.id " +
+                "GROUP BY c.id, c.nombre " +
                 "ORDER BY COUNT(e) DESC");
         List<CarreraInscriptosDTO> carreras = sql.getResultList();
         em.close();

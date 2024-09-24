@@ -216,6 +216,7 @@ public class Main {
         //obtenerEstudiantesInscriptos();
 
         //obtenerEstudiantesPorGenero("Mujer");
+
         //obtenerEstudiantePorCarreraYCiudad("TUDAI", "Tandil");
 
         //obtenerInformeCarreras();

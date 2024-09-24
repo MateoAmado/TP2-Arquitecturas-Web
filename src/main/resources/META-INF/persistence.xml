@@ -29,6 +29,7 @@
 
         <class>modelo.Carrera</class>
         <class>modelo.Estudiante</class>
+        <class>modelo.Estudiante_Carrera</class>
 
 
         <properties>
