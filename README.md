@@ -5,6 +5,9 @@
 # Indice:
  - [Requisitos](#Requisitos)
  - [Grupo](#Grupo)
+ -[Cambiar de BBDD](#¿Como-cambiar-de-BBDD?)
+ -[Invocar las funciones](¿Como-invocar-las-funciones?)
+
 
 ## Requisitos
 Consiste en realizar un diseño de el diagrama de objetos y el diagrama DER correspondiente de un registro de estudiante, utilizando JPA y consultas con JPQL, los puntos a trabajar son
@@ -22,10 +25,10 @@ Consiste en realizar un diseño de el diagrama de objetos y el diagrama DER corr
 inscriptos y egresados por año. Se deben **ordenar** las carreras alfabéticamente, y **presentar**
 los años de manera cronológica.
 
-##¿Como cambiar de BBDD?
+## ¿Como cambiar de BBDD?
 En main, el la linea 22, se usa una variable constante para usar el motor de la base de datos, en este caso solo debe cambiar la variable entre "MySQL" y "Derby"
 
-##¿Como invocar las funciones?
+## ¿Como invocar las funciones?
 A partir de la linea 212, se encuentran todas las funciones disponibles, solo se necesitan descomentar.
 
 
